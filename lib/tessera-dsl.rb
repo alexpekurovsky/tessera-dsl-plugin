@@ -21,11 +21,11 @@ module TesseraDSL
 			section[:items].each do |row|
 				row[:items].each do |cell|
 					cell[:items].each do |graph|
-						if graph[:query]
+						if graph[:query] && !graph[:query_target].empty?
 							@queries.push({:name => graph[:query], :targets => [graph[:query_target]]})
 							graph.delete(:query_target)
 						end
-						if graph[:query_other]
+						if graph[:query_other] && !graph[:query_other_target].empty?
 							@queries.push({:name => graph[:query_other], :targets => [graph[:query_other_target]]})
 							graph.delete(:query_other_target)
 						end
